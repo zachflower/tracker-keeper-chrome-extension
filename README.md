@@ -1,12 +1,10 @@
-[Chrome Extension Page](https://chrome.google.com/webstore/detail/unstumble/pmifhkljbaaaiobphihehgipahcmdgdh?hl=en-US&gl=US)
+Pivotal Tracker is a popular project management application used by development teams the world over. This extension adds a sorely needed "mass-assignment" feature, which allows project managers to mass assign a group of stories to an individual project member.
 
-Ever click on an interesting link only to find that the actual URL is hidden by StumbleUpon?
-
-Unstumble gives you more control over the content you share by automatically redirecting StumbleUpon links to a page's real URL.
+This is an especially useful feature for small, efficient teams that divvy up a dozen or more stories per sprint to each team member.
 
 # Change Log
 All notable changes to this project will be noted here.
 
-## [0.2] - 2015-06-22
-### Fixed
-- Fixed broken redirect when logged in with the StumbleUpon extension installed.
+## [0.1] - 2016-02-01
+### Changed
+- It has begun
