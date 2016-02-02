@@ -1,0 +1,24 @@
+{
+ "name": "Tracker Keeper",
+ "description": "Mass-assign Pivotal Tracker stories.",
+ "homepage_url": "http://zacharyflower.com",
+ "content_scripts": [
+ 	{
+ 		"matches": ["https://www.pivotaltracker.com/n/projects/*"],
+ 		"js": ["lib/jquery/jquery-1.12.0.min.js", "lib/underscorejs/underscore-min.js", "tracker-keeper.js"],
+    "css":["lib/fa/css/font-awesome.min.css"],
+ 		"run_at": "document_end"
+ 	}
+ ],
+ "icons": {
+     "16": "icon-16.png",
+     "48": "icon-48.png",
+     "128": "icon-128.png" },
+ "permissions": [
+     "https://www.pivotaltracker.com/n/projects/*",
+     "tabs"
+ ],
+ "web_accessible_resources": ["lib/fa/fonts/fontawesome-webfont.woff"],
+ "version": "0.1",
+ "manifest_version": 2
+}
