@@ -92,28 +92,56 @@ $("body").on("click", ".tk-assign-owner", function(e) {
 										});
 
 	if ( story_ids.length > 0 ) {
+		var delay = 1;
+
 		_.each(story_ids, function(story_id) {
 			// Get the selected story's current owner's
-			$.ajax('/services/v5/projects/' + project_id + '/stories/' + story_id, {
-				'type':'GET', 
-				beforeSend:function(xhr){
-					xhr.setRequestHeader('X-CSRF-Token', csrf);
-				}
-			}).done(function(data){
-				// Add user id to current owners list
-				var payload = {"owner_ids":_.union(data.owner_ids, [owner_id])};
+			var owners = _.toArray($(".story.item[data-id='" + story_id + "'] .story_owners a.owner_link"));
+			var owner_ids = _.chain(owners)
+												.pluck("attributes")
+												.pluck("data-person-id")
+												.pluck("value")
+												.unique()
+												.value()
+												.map(function(story_id){
+													return parseInt(story_id);
+												});
 
-				// Update story
+      if ( !!owner_ids.length ) {
+      	owner_ids = [];
+      }
+
+			var payload = {"owner_ids":_.union(owner_ids, [owner_id])};
+
+			// Update story
+			// note: a 500ms delay has been added between each story update to address request limits
+			setTimeout( function() {
 				$.ajax('/services/v5/projects/' + project_id + '/stories/' + story_id, {
 					'type':'PUT',
 					'data':JSON.stringify(payload),
 					'processData':false,
 					'contentType':'application/json',
+			    'tryCount':0,
+			    'retryLimit':3,
 					beforeSend:function(xhr){
 						xhr.setRequestHeader('X-CSRF-Token', csrf);
+					},
+					error:function(xhr, textStatus, errorThrown ) {
+            this.tryCount++;
+
+            if (this.tryCount <= this.retryLimit) {
+                // 500's are thrown occassionally, so give it a few tries before giving up
+                // source: http://stackoverflow.com/questions/10024469/whats-the-best-way-to-retry-an-ajax-request-on-failure-using-jquery
+                $.ajax(this);
+                return;
+            }
+
+            return;
 					}
 				});
-			});
+			}, delay);
+
+			delay += 500;
 		});
 	}
 
