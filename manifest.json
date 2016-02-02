@@ -1,6 +1,6 @@
 {
  "name": "Tracker Keeper",
- "description": "Mass-assign Pivotal Tracker stories.",
+ "description": "Mass-assign Pivotal Tracker stories to project members.",
  "homepage_url": "http://zacharyflower.com",
  "content_scripts": [
  	{
