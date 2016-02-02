@@ -6,7 +6,7 @@ This is an especially useful feature for small, efficient teams that divvy up a 
 All notable changes to this project will be noted here.
 
 ## [0.2] - 2016-02-01
-### Changed
+### Fixed
 - Retry updates when an error is received
 - Add 500ms delay between each story update
 
