@@ -1,4 +1,5 @@
-document.head.appendChild(fa);
+initFontAwesome();
+
 var project_members_dropdown = _.template("<div class=\"lightbox owner top above_scrim standard add_owner\" id=\"tk-members-dropdown\"><article class=\"content\"><label><input type=\"text\" class=\"std search\"></label><ul><% _.each(members, function(member) { %> <li><a data-person-id=\"<%=member.id%>\" class=\"tk-assign-owner\"><span><span class=\"name\"><%=member.name%></span><span class=\"initials\"><%=member.initials%></span></span></a></li><% }); %></ul></article></div>");
 
 var csrf = $("meta[name='csrf-token']").attr('content');
@@ -124,3 +125,13 @@ $("body").on("click", ".tk-assign-owner", function(e) {
 
 	return false;
 });
+
+// Initialize FontAwesome
+// source: http://stackoverflow.com/questions/4535816/how-to-use-font-face-on-a-chrome-extension-in-a-content-script
+function initFontAwesome() {
+	var fa = document.createElement('style');
+	fa.type = 'text/css';
+	fa.textContent = '@font-face { font-family: FontAwesome; src: url("'+ chrome.extension.getURL('lib/fa/fonts/fontawesome-webfont.woff?v=4.0.3')+ '"); }';
+
+	document.head.appendChild(fa);
+}
