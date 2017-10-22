@@ -1,3 +1,7 @@
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+# Tracker Keeper Chrome Extension
+
 **NOTE: This extension is no longer working or in active development**
 
 [Chrome Extension Page](https://chrome.google.com/webstore/detail/tracker-keeper/ehgjdijnfokhmdjafcfdmfinkimjgjfj)
@@ -6,14 +10,14 @@ Pivotal Tracker is a popular project management application used by development 
 
 This is an especially useful feature for small, efficient teams that divvy up a dozen or more stories per sprint to each team member.
 
-# Change Log
+## Change Log
 All notable changes to this project will be noted here.
 
-## [0.2] - 2016-02-01
-### Fixed
+### [0.2] - 2016-02-01
+#### Fixed
 - Retry updates when an error is received
 - Add 500ms delay between each story update
 
-## [0.1] - 2016-02-01
-### Changed
+### [0.1] - 2016-02-01
+#### Changed
 - It has begun
